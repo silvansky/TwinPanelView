@@ -101,6 +101,7 @@
 - (void)setLeftView:(NSView *)leftView rightView:(NSView *)rightView
 {
 	[self removeConstraints:[self constraints]];
+	self.mainConstraints = nil;
 	if (self.leftView)
 	{
 		[self.leftView removeFromSuperview];
@@ -229,9 +230,13 @@
 			if (!self.leftViewWidthConstraint)
 			{
 				self.leftViewWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[leftView(width)]" options:0 metrics:@{ @"width" : @(width) } views:[self viewsDictionary]] lastObject];
+				[self.leftViewWidthConstraint setPriority:NSLayoutPriorityDefaultHigh];
 				[self addConstraint:self.leftViewWidthConstraint];
 			}
-			self.leftViewWidthConstraint.constant = width;
+			else
+			{
+				self.leftViewWidthConstraint.constant = width;
+			}
 		}
 	}
 }
