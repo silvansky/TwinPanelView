@@ -15,6 +15,7 @@ The source code of TwinPanelView is distributed under [MIT License](http://en.wi
 - styling handles with background color, background image and handle image
 - minimum and maximum size limits support for subviews
 - leftView always preserves its width (on any resize)
+- saving and restoring position of handle (with encodable NSDictionsry)
 
 ## Usage example:
 
