@@ -4,6 +4,8 @@ TwinPanelView custom view requires autolayout enabled in a xib it is added to. N
 
 NSSplitView is a buggy thing when it comes to autolayout, so I've decided to write my own split view based on autolayout features. This repo contains also a demo project, which shows a typical TwinPanelView use cases.
 
+If you are looking for multi-handle split view, you may be interesten in my [ALSplitView](https://github.com/silvansky/ALSplitView) project.
+
 The source code of TwinPanelView is distributed under [MIT License](http://en.wikipedia.org/wiki/MIT_License). See file LICENSE for more information.
 
 ## Main features:
