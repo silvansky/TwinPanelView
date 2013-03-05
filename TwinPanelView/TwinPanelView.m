@@ -5,6 +5,8 @@
 //  Created by Valentine Silvansky on 05.03.13.
 //  Copyright (c) 2013 silvansky. All rights reserved.
 //
+//  Original code stored at https://github.com/silvansky/TwinPanelView
+//
 
 #import "TwinPanelView.h"
 
