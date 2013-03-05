@@ -2,7 +2,7 @@
 //  main.m
 //  TwinPanelViewDemo
 //
-//  Created by Valentine Gorshkov on 05.03.13.
+//  Created by Valentine Silvansky on 05.03.13.
 //  Copyright (c) 2013 silvansky. All rights reserved.
 //
 

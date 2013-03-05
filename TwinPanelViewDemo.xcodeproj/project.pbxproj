@@ -13,6 +13,9 @@
 		C583E64E16E5C813004A9CC0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C583E64C16E5C813004A9CC0 /* Credits.rtf */; };
 		C583E65116E5C813004A9CC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C583E65016E5C813004A9CC0 /* AppDelegate.m */; };
 		C583E65416E5C813004A9CC0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C583E65216E5C813004A9CC0 /* MainMenu.xib */; };
+		C583E65C16E5C843004A9CC0 /* TwinPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = C583E65B16E5C843004A9CC0 /* TwinPanelView.m */; };
+		C583E65F16E5D6BD004A9CC0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C583E65E16E5D6BC004A9CC0 /* WebKit.framework */; };
+		C583E66116E5DC91004A9CC0 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C583E66016E5DC91004A9CC0 /* img.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,10 @@
 		C583E64F16E5C813004A9CC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C583E65016E5C813004A9CC0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C583E65316E5C813004A9CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C583E65A16E5C843004A9CC0 /* TwinPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwinPanelView.h; path = TwinPanelView/TwinPanelView.h; sourceTree = "<group>"; };
+		C583E65B16E5C843004A9CC0 /* TwinPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwinPanelView.m; path = TwinPanelView/TwinPanelView.m; sourceTree = "<group>"; };
+		C583E65E16E5D6BC004A9CC0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C583E66016E5DC91004A9CC0 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C583E65F16E5D6BD004A9CC0 /* WebKit.framework in Frameworks */,
 				C583E63E16E5C813004A9CC0 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +54,7 @@
 		C583E63116E5C813004A9CC0 = {
 			isa = PBXGroup;
 			children = (
+				C583E65D16E5C848004A9CC0 /* TwinPanelView */,
 				C583E64316E5C813004A9CC0 /* TwinPanelViewDemo */,
 				C583E63C16E5C813004A9CC0 /* Frameworks */,
 				C583E63B16E5C813004A9CC0 /* Products */,
@@ -63,6 +72,7 @@
 		C583E63C16E5C813004A9CC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C583E65E16E5D6BC004A9CC0 /* WebKit.framework */,
 				C583E63D16E5C813004A9CC0 /* Cocoa.framework */,
 				C583E63F16E5C813004A9CC0 /* Other Frameworks */,
 			);
@@ -93,6 +103,7 @@
 		C583E64416E5C813004A9CC0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C583E66016E5DC91004A9CC0 /* img.jpg */,
 				C583E64516E5C813004A9CC0 /* TwinPanelViewDemo-Info.plist */,
 				C583E64616E5C813004A9CC0 /* InfoPlist.strings */,
 				C583E64916E5C813004A9CC0 /* main.m */,
@@ -100,6 +111,15 @@
 				C583E64C16E5C813004A9CC0 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C583E65D16E5C848004A9CC0 /* TwinPanelView */ = {
+			isa = PBXGroup;
+			children = (
+				C583E65A16E5C843004A9CC0 /* TwinPanelView.h */,
+				C583E65B16E5C843004A9CC0 /* TwinPanelView.m */,
+			);
+			name = TwinPanelView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +176,7 @@
 				C583E64816E5C813004A9CC0 /* InfoPlist.strings in Resources */,
 				C583E64E16E5C813004A9CC0 /* Credits.rtf in Resources */,
 				C583E65416E5C813004A9CC0 /* MainMenu.xib in Resources */,
+				C583E66116E5DC91004A9CC0 /* img.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +189,7 @@
 			files = (
 				C583E64A16E5C813004A9CC0 /* main.m in Sources */,
 				C583E65116E5C813004A9CC0 /* AppDelegate.m in Sources */,
+				C583E65C16E5C843004A9CC0 /* TwinPanelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
