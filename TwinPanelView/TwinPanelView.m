@@ -233,6 +233,11 @@
 
 #pragma mark - Overrides
 
++ (BOOL)requiresConstraintBasedLayout
+{
+	return YES;
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[[NSColor whiteColor] set];
