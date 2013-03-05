@@ -208,6 +208,34 @@
 	[self addConstraint:self.maximumHeightConstraint];
 }
 
+- (NSDictionary *)saveHandlePosition
+{
+	if (self.leftView)
+	{
+		// left view width is enough
+		return @{ @"leftViewWidth" : @(self.leftView.frame.size.width) };
+	}
+	return @{};
+}
+
+- (void)restoreHandlePositionWithDictionary:(NSDictionary *)dictionary
+{
+	if (dictionary)
+	{
+		NSNumber *n = dictionary[@"leftViewWidth"];
+		if (n)
+		{
+			CGFloat width = [n floatValue];
+			if (!self.leftViewWidthConstraint)
+			{
+				self.leftViewWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[leftView(width)]" options:0 metrics:@{ @"width" : @(width) } views:[self viewsDictionary]] lastObject];
+				[self addConstraint:self.leftViewWidthConstraint];
+			}
+			self.leftViewWidthConstraint.constant = width;
+		}
+	}
+}
+
 #pragma mark - Properties
 
 - (NSColor *)handleColor
@@ -335,7 +363,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[[NSColor whiteColor] set];
+	[[NSColor clearColor] set];
 	NSRectFill(self.bounds);
 }
 

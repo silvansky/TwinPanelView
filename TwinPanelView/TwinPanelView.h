@@ -32,4 +32,7 @@
 - (void)setMinumumHeight:(CGFloat)height;
 - (void)setMaxumumHeight:(CGFloat)height;
 
+- (NSDictionary *)saveHandlePosition;
+- (void)restoreHandlePositionWithDictionary:(NSDictionary *)dictionary;
+
 @end

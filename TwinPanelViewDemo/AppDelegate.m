@@ -22,8 +22,8 @@
 
 - (void)dealloc
 {
-	self.outlineView = nil;
 	self.webView = nil;
+	self.outlineViewData = nil;
 	[super dealloc];
 }
 
@@ -44,6 +44,12 @@
 	[self.twinPanelView setRightViewMinimumWidth:500.f];
 	self.twinPanelView.handleWidth = 1.f;
 	self.twinPanelView.handleColor = [NSColor grayColor];
+	[self.twinPanelView restoreHandlePositionWithDictionary:[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"twinPanelView"]];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[self.twinPanelView saveHandlePosition] forKey:@"twinPanelView"];
 }
 
 #pragma mark - NSOutlineViewDataSource
