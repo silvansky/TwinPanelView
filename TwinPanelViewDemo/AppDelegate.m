@@ -42,6 +42,8 @@
 	[self.twinPanelView setLeftViewMinimumWidth:200.f];
 	[self.twinPanelView setLeftViewMaximumWidth:300.f];
 	[self.twinPanelView setRightViewMinimumWidth:500.f];
+	self.twinPanelView.handleWidth = 1.f;
+	self.twinPanelView.handleColor = [NSColor grayColor];
 }
 
 #pragma mark - NSOutlineViewDataSource

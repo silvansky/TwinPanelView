@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 silvansky. All rights reserved.
 //
 //  Original code stored at https://github.com/silvansky/TwinPanelView
+//  Distributed under MIT License
 //
 
 #import "TwinPanelView.h"
@@ -22,6 +23,12 @@
 #pragma mark - TwinPanelView private interface
 
 @interface TwinPanelView ()
+{
+	NSColor *_handleColor;
+	NSImage *_handleBackgroundImage;
+	NSImage *_handleImage;
+	CGFloat _handleWidth;
+}
 
 @property (retain, readwrite) NSView *leftView;
 @property (retain, readwrite) NSView *rightView;
@@ -64,6 +71,7 @@
 		self.handle = [[[TwinPanelViewHandle alloc] init] autorelease];
 		self.handle.twinPanelView = self;
 		[self addSubview:self.handle];
+		_handleWidth = 10.f;
 	}
 	return self;
 }
@@ -76,6 +84,15 @@
 	self.mainConstraints = nil;
 	self.sizingConstraints = nil;
 	self.draggingConstraint = nil;
+	self.handleWidthConstraint = nil;
+	self.leftViewMinimumWidthConstraint = nil;
+	self.leftViewMaximumWidthConstraint = nil;
+	self.leftViewWidthConstraint = nil;
+	self.rightViewMinimumWidthConstraint = nil;
+	self.rightViewMaximumWidthConstraint = nil;
+	self.handleColor = nil;
+	self.handleBackgroundImage = nil;
+	self.handleImage = nil;
 	[super dealloc];
 }
 
@@ -191,6 +208,82 @@
 	[self addConstraint:self.maximumHeightConstraint];
 }
 
+#pragma mark - Properties
+
+- (NSColor *)handleColor
+{
+	@synchronized(self)
+	{
+		return _handleColor;
+	}
+}
+
+- (void)setHandleColor:(NSColor *)handleColor
+{
+	@synchronized(self)
+	{
+		[handleColor retain];
+		[_handleColor release];
+		_handleColor = handleColor;
+		[self.handle setNeedsDisplay:YES];
+	}
+}
+
+- (NSImage *)handleBackgroundImage
+{
+	@synchronized(self)
+	{
+		return _handleBackgroundImage;
+	}
+}
+
+- (void)setHandleBackgroundImage:(NSImage *)handleBackgroundImage
+{
+	@synchronized(self)
+	{
+		[handleBackgroundImage retain];
+		[_handleBackgroundImage release];
+		_handleBackgroundImage = handleBackgroundImage;
+		[self.handle setNeedsDisplay:YES];
+	}
+}
+
+- (NSImage *)handleImage
+{
+	@synchronized(self)
+	{
+		return _handleImage;
+	}
+}
+
+- (void)setHandleImage:(NSImage *)handleImage
+{
+	@synchronized(self)
+	{
+		[handleImage retain];
+		[_handleImage release];
+		_handleImage = handleImage;
+		[self.handle setNeedsDisplay:YES];
+	}
+}
+
+- (CGFloat)handleWidth
+{
+	@synchronized(self)
+	{
+		return _handleWidth;
+	}
+}
+
+- (void)setHandleWidth:(CGFloat)handleWidth
+{
+	@synchronized(self)
+	{
+		_handleWidth = handleWidth;
+		self.handleWidthConstraint.constant = _handleWidth;
+	}
+}
+
 #pragma mark - Private
 
 - (NSDictionary *)viewsDictionary
@@ -217,7 +310,7 @@
 	[constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[leftView]|" options:0 metrics:nil views:[self viewsDictionary]]];
 	[constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[handle]|" options:0 metrics:nil views:[self viewsDictionary]]];
 	[constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[rightView]|" options:0 metrics:nil views:[self viewsDictionary]]];
-	self.handleWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[handle(5)]" options:0 metrics:nil views:[self viewsDictionary]] lastObject];
+	self.handleWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[handle(width)]" options:0 metrics:@{ @"width" : @(self.handleWidth) } views:[self viewsDictionary]] lastObject];
 	[constraints addObject:self.handleWidthConstraint];
 
 	if (self.mainConstraints)
@@ -269,8 +362,25 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[[NSColor redColor] set];
+	[[NSColor clearColor] set];
 	NSRectFill(self.bounds);
+	if (self.twinPanelView.handleColor)
+	{
+		[self.twinPanelView.handleColor set];
+		NSRectFill(dirtyRect);
+	}
+	if (self.twinPanelView.handleBackgroundImage)
+	{
+		[self.twinPanelView.handleBackgroundImage drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f respectFlipped:YES hints:nil];
+	}
+	if (self.twinPanelView.handleImage)
+	{
+		NSRect centeredRect;
+		centeredRect.origin.x = self.bounds.origin.x + (self.bounds.size.width - [self.twinPanelView.handleImage size].width) / 2.f;
+		centeredRect.origin.y = self.bounds.origin.y + (self.bounds.size.height - [self.twinPanelView.handleImage size].height) / 2.f;
+		centeredRect.size = self.twinPanelView.handleImage.size;
+		[self.twinPanelView.handleImage drawInRect:centeredRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f respectFlipped:YES hints:nil];
+	}
 }
 
 - (void)updateTrackingAreas
