@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C583E63E16E5C813004A9CC0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C583E63D16E5C813004A9CC0 /* Cocoa.framework */; };
+		C583E64816E5C813004A9CC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C583E64616E5C813004A9CC0 /* InfoPlist.strings */; };
+		C583E64A16E5C813004A9CC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C583E64916E5C813004A9CC0 /* main.m */; };
+		C583E64E16E5C813004A9CC0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C583E64C16E5C813004A9CC0 /* Credits.rtf */; };
+		C583E65116E5C813004A9CC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C583E65016E5C813004A9CC0 /* AppDelegate.m */; };
+		C583E65416E5C813004A9CC0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C583E65216E5C813004A9CC0 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C583E63A16E5C813004A9CC0 /* TwinPanelViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwinPanelViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C583E63D16E5C813004A9CC0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C583E64016E5C813004A9CC0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C583E64116E5C813004A9CC0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C583E64216E5C813004A9CC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C583E64516E5C813004A9CC0 /* TwinPanelViewDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwinPanelViewDemo-Info.plist"; sourceTree = "<group>"; };
+		C583E64716E5C813004A9CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C583E64916E5C813004A9CC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C583E64B16E5C813004A9CC0 /* TwinPanelViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwinPanelViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		C583E64D16E5C813004A9CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		C583E64F16E5C813004A9CC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C583E65016E5C813004A9CC0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C583E65316E5C813004A9CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C583E63716E5C813004A9CC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C583E63E16E5C813004A9CC0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C583E63116E5C813004A9CC0 = {
+			isa = PBXGroup;
+			children = (
+				C583E64316E5C813004A9CC0 /* TwinPanelViewDemo */,
+				C583E63C16E5C813004A9CC0 /* Frameworks */,
+				C583E63B16E5C813004A9CC0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C583E63B16E5C813004A9CC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C583E63A16E5C813004A9CC0 /* TwinPanelViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C583E63C16E5C813004A9CC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C583E63D16E5C813004A9CC0 /* Cocoa.framework */,
+				C583E63F16E5C813004A9CC0 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C583E63F16E5C813004A9CC0 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C583E64016E5C813004A9CC0 /* AppKit.framework */,
+				C583E64116E5C813004A9CC0 /* CoreData.framework */,
+				C583E64216E5C813004A9CC0 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C583E64316E5C813004A9CC0 /* TwinPanelViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C583E64F16E5C813004A9CC0 /* AppDelegate.h */,
+				C583E65016E5C813004A9CC0 /* AppDelegate.m */,
+				C583E65216E5C813004A9CC0 /* MainMenu.xib */,
+				C583E64416E5C813004A9CC0 /* Supporting Files */,
+			);
+			path = TwinPanelViewDemo;
+			sourceTree = "<group>";
+		};
+		C583E64416E5C813004A9CC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C583E64516E5C813004A9CC0 /* TwinPanelViewDemo-Info.plist */,
+				C583E64616E5C813004A9CC0 /* InfoPlist.strings */,
+				C583E64916E5C813004A9CC0 /* main.m */,
+				C583E64B16E5C813004A9CC0 /* TwinPanelViewDemo-Prefix.pch */,
+				C583E64C16E5C813004A9CC0 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C583E63916E5C813004A9CC0 /* TwinPanelViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C583E65716E5C813004A9CC0 /* Build configuration list for PBXNativeTarget "TwinPanelViewDemo" */;
+			buildPhases = (
+				C583E63616E5C813004A9CC0 /* Sources */,
+				C583E63716E5C813004A9CC0 /* Frameworks */,
+				C583E63816E5C813004A9CC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TwinPanelViewDemo;
+			productName = TwinPanelViewDemo;
+			productReference = C583E63A16E5C813004A9CC0 /* TwinPanelViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C583E63216E5C813004A9CC0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = silvansky;
+			};
+			buildConfigurationList = C583E63516E5C813004A9CC0 /* Build configuration list for PBXProject "TwinPanelViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C583E63116E5C813004A9CC0;
+			productRefGroup = C583E63B16E5C813004A9CC0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C583E63916E5C813004A9CC0 /* TwinPanelViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C583E63816E5C813004A9CC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C583E64816E5C813004A9CC0 /* InfoPlist.strings in Resources */,
+				C583E64E16E5C813004A9CC0 /* Credits.rtf in Resources */,
+				C583E65416E5C813004A9CC0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C583E63616E5C813004A9CC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C583E64A16E5C813004A9CC0 /* main.m in Sources */,
+				C583E65116E5C813004A9CC0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C583E64616E5C813004A9CC0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C583E64716E5C813004A9CC0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C583E64C16E5C813004A9CC0 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C583E64D16E5C813004A9CC0 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		C583E65216E5C813004A9CC0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C583E65316E5C813004A9CC0 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C583E65516E5C813004A9CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C583E65616E5C813004A9CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C583E65816E5C813004A9CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TwinPanelViewDemo/TwinPanelViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "TwinPanelViewDemo/TwinPanelViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C583E65916E5C813004A9CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TwinPanelViewDemo/TwinPanelViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "TwinPanelViewDemo/TwinPanelViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C583E63516E5C813004A9CC0 /* Build configuration list for PBXProject "TwinPanelViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C583E65516E5C813004A9CC0 /* Debug */,
+				C583E65616E5C813004A9CC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C583E65716E5C813004A9CC0 /* Build configuration list for PBXNativeTarget "TwinPanelViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C583E65816E5C813004A9CC0 /* Debug */,
+				C583E65916E5C813004A9CC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C583E63216E5C813004A9CC0 /* Project object */;
+}
