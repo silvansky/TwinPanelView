@@ -38,9 +38,11 @@
 	self.webView = [[[WebView alloc] init] autorelease];
 	[self.webView setMainFrameURL:@"http://news.google.com"];
 	[self.twinPanelView setLeftView:self.outlineViewScrollView rightView:self.webView];
-	[self.twinPanelView setMinumumHeight:500.f];
+	[self.twinPanelView setMinimumHeight:500.f];
 	[self.twinPanelView setLeftViewMinimumWidth:200.f];
 	[self.twinPanelView setLeftViewMaximumWidth:300.f];
+	[self.twinPanelView setDefaultLeftViewWidth:250.f];
+	[self.twinPanelView setHandleOuterWidth:5.f];
 	[self.twinPanelView setRightViewMinimumWidth:500.f];
 	self.twinPanelView.handleWidth = 1.f;
 	self.twinPanelView.handleColor = [NSColor grayColor];
