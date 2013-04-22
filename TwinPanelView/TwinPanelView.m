@@ -17,6 +17,7 @@
 
 @property (assign) TwinPanelView *twinPanelView;
 @property (retain) NSTrackingArea *trackingArea;
+@property (assign) CGFloat outerWidth;
 
 @end
 
@@ -50,6 +51,8 @@
 
 @property (retain) NSLayoutConstraint *leftViewWidthConstraint;
 
+@property (assign) CGFloat defaultLeftWidth;
+
 - (NSDictionary *)viewsDictionary;
 
 - (void)updateMainConstraints;
@@ -69,6 +72,9 @@
 	if (self)
 	{
 		self.handle = [[[TwinPanelViewHandle alloc] init] autorelease];
+		self.handle.outerWidth = 0.f;
+		self.doubleClickSetDefaultWidth = YES;
+		self.defaultLeftWidth = -1.f;
 		self.handle.twinPanelView = self;
 		[self addSubview:self.handle];
 		_handleWidth = 10.f;
@@ -80,6 +86,7 @@
 {
 	self.leftView = nil;
 	self.rightView = nil;
+	[self.handle removeFromSuperview];
 	self.handle = nil;
 	self.mainConstraints = nil;
 	self.sizingConstraints = nil;
@@ -185,7 +192,7 @@
 	[self addConstraint:self.rightViewMaximumWidthConstraint];
 }
 
-- (void)setMinumumHeight:(CGFloat)height
+- (void)setMinimumHeight:(CGFloat)height
 {
 	if (self.minimumHeightConstraint)
 	{
@@ -197,7 +204,7 @@
 	[self addConstraint:self.minimumHeightConstraint];
 }
 
-- (void)setMaxumumHeight:(CGFloat)height
+- (void)setMaximumHeight:(CGFloat)height
 {
 	if (self.maximumHeightConstraint)
 	{
@@ -207,6 +214,17 @@
 
 	self.maximumHeightConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(<=height)]" options:0 metrics:@{ @"height" : @(height) } views:[self viewsDictionary]] lastObject];
 	[self addConstraint:self.maximumHeightConstraint];
+}
+
+- (void)setHandleOuterWidth:(CGFloat)width
+{
+	self.handle.outerWidth = width;
+	[self.handle cursorUpdate:nil];
+}
+
+- (void)setDefaultLeftViewWidth:(CGFloat)width
+{
+	self.defaultLeftWidth = width;
 }
 
 - (NSDictionary *)saveHandlePosition
@@ -387,6 +405,15 @@
 	[super addSubview:aView];
 }
 
+- (NSView *)hitTest:(NSPoint)aPoint
+{
+	NSRect handleRect = [self.handle frame];
+	CGFloat dx = (self.handle.outerWidth - handleRect.size.width) / 2.f;
+	handleRect = NSInsetRect(handleRect, -dx, 0.f);
+	NSPoint p = [self convertPoint:aPoint fromView:[self superview]];
+	return NSPointInRect(p, handleRect) ? self.handle : [super hitTest:aPoint];
+}
+
 @end
 
 #pragma mark - TwinPanelViewHandle
@@ -431,41 +458,67 @@
 	[super resetCursorRects];
 	NSCursor *newCursor;
 	newCursor = [NSCursor resizeLeftRightCursor];
-	[self addCursorRect:[self bounds] cursor:newCursor];
+	CGFloat dx = (self.outerWidth - self.bounds.size.width) / 2.f;
+	NSRect r = NSInsetRect(self.bounds, -dx, 0.f);
+	[self addCursorRect:r cursor:newCursor];
 	[newCursor set];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-	// location in superview
-	NSPoint location = [self.twinPanelView convertPoint:[theEvent locationInWindow] fromView:nil];
-	[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
-	if (self.twinPanelView.leftViewWidthConstraint)
+	if ([theEvent type] == NSLeftMouseDown)
 	{
-		[self.twinPanelView removeConstraint:self.twinPanelView.leftViewWidthConstraint];
-		self.twinPanelView.leftViewWidthConstraint = nil;
+		// location in superview
+		NSPoint location = [self.twinPanelView convertPoint:[theEvent locationInWindow] fromView:nil];
+
+		CGFloat constant;
+		if ([theEvent clickCount] == 2)
+		{
+			constant = self.twinPanelView.defaultLeftWidth;
+			if (constant < 0.f)
+			{
+				constant = self.twinPanelView.leftViewMinimumWidthConstraint.constant;
+			}
+		}
+		else
+		{
+			constant = location.x;
+		}
+
+		[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
+		if (self.twinPanelView.leftViewWidthConstraint)
+		{
+			[self.twinPanelView removeConstraint:self.twinPanelView.leftViewWidthConstraint];
+			self.twinPanelView.leftViewWidthConstraint = nil;
+		}
+		self.twinPanelView.draggingConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.twinPanelView attribute:NSLayoutAttributeLeft multiplier:0.f constant:constant];
+		[self.twinPanelView.draggingConstraint setPriority:NSLayoutPriorityDragThatCannotResizeWindow];
+		[self.twinPanelView addConstraint:self.twinPanelView.draggingConstraint];
 	}
-	self.twinPanelView.draggingConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.twinPanelView attribute:NSLayoutAttributeLeft multiplier:0.f constant:location.x];
-	[self.twinPanelView.draggingConstraint setPriority:NSLayoutPriorityDragThatCannotResizeWindow];
-	[self.twinPanelView addConstraint:self.twinPanelView.draggingConstraint];
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-	// location in superview
-	NSPoint location = [self.twinPanelView convertPoint:[theEvent locationInWindow] fromView:nil];
-	[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
-	self.twinPanelView.draggingConstraint.constant = location.x;
-	[self.twinPanelView addConstraint:self.twinPanelView.draggingConstraint];
+	if ([theEvent type] == NSLeftMouseDragged)
+	{
+		// location in superview
+		NSPoint location = [self.twinPanelView convertPoint:[theEvent locationInWindow] fromView:nil];
+		[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
+		self.twinPanelView.draggingConstraint.constant = location.x;
+		[self.twinPanelView addConstraint:self.twinPanelView.draggingConstraint];
+	}
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-	[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
-	self.twinPanelView.draggingConstraint = nil;
-	self.twinPanelView.leftViewWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[leftView(width)]" options:0 metrics:@{ @"width" : @(self.twinPanelView.leftView.frame.size.width) } views:[self.twinPanelView viewsDictionary]] lastObject];
-	[self.twinPanelView.leftViewWidthConstraint setPriority:NSLayoutPriorityDefaultHigh];
-	[self.twinPanelView addConstraint:self.twinPanelView.leftViewWidthConstraint];
+	if ([theEvent type] == NSLeftMouseUp)
+	{
+		[self.twinPanelView removeConstraint:self.twinPanelView.draggingConstraint];
+		self.twinPanelView.draggingConstraint = nil;
+		self.twinPanelView.leftViewWidthConstraint = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[leftView(width)]" options:0 metrics:@{ @"width" : @(self.twinPanelView.leftView.frame.size.width) } views:[self.twinPanelView viewsDictionary]] lastObject];
+		[self.twinPanelView.leftViewWidthConstraint setPriority:NSLayoutPriorityDefaultHigh];
+		[self.twinPanelView addConstraint:self.twinPanelView.leftViewWidthConstraint];
+	}
 }
 
 @end

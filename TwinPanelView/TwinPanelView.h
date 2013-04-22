@@ -20,6 +20,7 @@
 @property (retain) NSImage *handleBackgroundImage;
 @property (retain) NSImage *handleImage;
 @property (assign) CGFloat handleWidth;
+@property (assign) BOOL doubleClickSetDefaultWidth;
 
 - (void)setLeftView:(NSView *)leftView rightView:(NSView *)rightView;
 
@@ -29,8 +30,11 @@
 - (void)setRightViewMinimumWidth:(CGFloat)width;
 - (void)setRightViewMaximumWidth:(CGFloat)width;
 
-- (void)setMinumumHeight:(CGFloat)height;
-- (void)setMaxumumHeight:(CGFloat)height;
+- (void)setMinimumHeight:(CGFloat)height;
+- (void)setMaximumHeight:(CGFloat)height;
+
+- (void)setHandleOuterWidth:(CGFloat)width;
+- (void)setDefaultLeftViewWidth:(CGFloat)width;
 
 - (NSDictionary *)saveHandlePosition;
 - (void)restoreHandlePositionWithDictionary:(NSDictionary *)dictionary;
